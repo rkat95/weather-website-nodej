@@ -19,12 +19,17 @@ getWeatherForecast = (address, callback) => {
     if (!err) {
       getCurrentForecast(
         locationData,
-        ({ weather_descriptions, temperature, feelslike }, err) => {
+        (
+          { weather_descriptions, temperature, feelslike, observation_time },
+          err
+        ) => {
           if (!err) {
+            console.log();
             callback({
               forecast: weather_descriptions[0],
               temperature,
               feelslike,
+              observation_time,
               location: locationData.location,
             });
           } else {

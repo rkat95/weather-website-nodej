@@ -43,15 +43,12 @@ app.get("/weather", (req, res) => {
   if (!req.query.address) {
     return res.send({ error: "Address should be provided" });
   }
-  weather.getWeatherForecast(
-    req.query.address,
-    ({ forecast, location } = {}, err) => {
-      if (err) {
-        return res.send({ error: err });
-      }
-      res.send({ forecast, location, address: req.query.address });
+  weather.getWeatherForecast(req.query.address, (data = {}, err) => {
+    if (err) {
+      return res.send({ error: err });
     }
-  );
+    res.send({ ...data, address: req.query.address });
+  });
 });
 
 app.get("/help/*", (req, res) => {
