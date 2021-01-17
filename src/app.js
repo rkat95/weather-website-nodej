@@ -5,8 +5,8 @@ const weather = require("./utils/weather-service");
 
 //create express app
 const app = express();
-const port = process.env.PORT || 3000;
-
+const port = process.env.port || 3000;
+console.log("PORT", port);
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 //partials are pages shared across the app
